@@ -1,7 +1,14 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import SignupModal from "./SignupModal";
 
 const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <div className="h-[150px] w-full flex items-center justify-between">
       <div className="flex items-center gap-2">
@@ -33,10 +40,15 @@ const Header = () => {
             Contact
           </button>
         </div>
-        <button className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold">
+        <button
+          onClick={openModal}
+          className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold"
+        >
           Join Quest
         </button>
       </div>
+
+      <SignupModal isOpen={isModalOpen} onRequestClose={closeModal} />
     </div>
   );
 };

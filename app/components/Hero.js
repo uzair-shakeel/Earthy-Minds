@@ -1,8 +1,15 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import ImageSlider from "./ImageSlider";
 import Image from "next/image";
+import SignupModal from "./SignupModal";
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   const images = [
     {
       src: "/assets/habit-tracker.png",
@@ -56,7 +63,10 @@ const Hero = () => {
             Without you, the magic won't happen!
           </p>
           <div className="flex justify-center">
-            <button className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold">
+            <button
+              onClick={openModal}
+              className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold"
+            >
               Join Quest
             </button>
           </div>
@@ -65,6 +75,8 @@ const Hero = () => {
           <ImageSlider images={images} />
         </div>
       </div>
+
+      <SignupModal isOpen={isModalOpen} onRequestClose={closeModal} />
     </div>
   );
 };

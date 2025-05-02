@@ -7,7 +7,7 @@ const NatureSpirits = () => {
       <div className="flex gap-6 justify-center">
         <div className="w-[120px] h-[120px]">
           <Image
-            src="/assets/forest-spirit.png"
+            src="/assets/cc3365f6c22d590829a49afcd160ac0876a100f6.png"
             alt="Forest Spirit"
             width={120}
             height={120}
@@ -16,7 +16,7 @@ const NatureSpirits = () => {
         </div>
         <div className="w-[120px] h-[120px]">
           <Image
-            src="/assets/water-spirit.png"
+            src="/assets/c3fc58c241689c51aa9ac92edb647a0b0f32d905.png"
             alt="Water Spirit"
             width={120}
             height={120}
@@ -25,7 +25,7 @@ const NatureSpirits = () => {
         </div>
         <div className="w-[120px] h-[120px]">
           <Image
-            src="/assets/earth-spirit.png"
+            src="/assets/582816b1ade1bfce7955562ead51a39ba3f41daf.png"
             alt="Earth Spirit"
             width={120}
             height={120}
@@ -34,7 +34,7 @@ const NatureSpirits = () => {
         </div>
         <div className="w-[120px] h-[120px]">
           <Image
-            src="/assets/flower-spirit.png"
+            src="/assets/e688057f5b0fe98085900e419ee77c10f765b821.png"
             alt="Flower Spirit"
             width={120}
             height={120}

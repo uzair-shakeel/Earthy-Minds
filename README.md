@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Earthy Minds - Rise of the Wild
+
+A fantasy eco-habit tracker application that turns real-world sustainability actions into quests in a magical world.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+## Firebase Authentication Setup
+
+This project uses Firebase Authentication for user signup and email verification. Follow these steps to set up Firebase:
+
+1. Go to [Firebase Console](https://console.firebase.google.com/) and create a new project
+2. Add a web app to your Firebase project
+3. Enable Email/Password authentication in the Authentication section
+4. Set up the Email verification template in Authentication > Templates
+5. Copy your Firebase configuration from Project Settings
+6. Create a `.env.local` file in your project root with the following values from your Firebase project:
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+```
+
+## Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Signup modal with email verification
+- Confirmation modal after signup
+- Integration with Firebase Authentication for secure user management
+- Responsive design matching the provided mockups
+- Eco-habit tracking gamification concept
 
-## Learn More
+## Detailed Firebase Authentication Troubleshooting
 
-To learn more about Next.js, take a look at the following resources:
+If you encounter issues with Firebase authentication:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Check your Firebase project and configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Verify that your Firebase API key and configuration in `.env.local` is correct
+- Make sure the project values match exactly with what's in your Firebase Console
+- Check that all required fields are present in the configuration
 
-## Deploy on Vercel
+### 2. Verify Firebase Authentication settings
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Ensure Email/Password authentication is enabled in your Firebase project
+- Go to the Authentication section in Firebase Console and check "Sign-in method"
+- Verify that Email/Password is enabled with the toggle switch
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 3. Common Firebase error codes and solutions
+
+- `auth/configuration-not-found`: This usually means your Firebase project ID or API key is incorrect
+- `auth/network-request-failed`: Check your internet connection
+- `auth/email-already-in-use`: The email is already registered
+- `auth/invalid-email`: The email format is incorrect
+
+### 4. Web browser console debugging
+
+- Open your browser's developer tools (F12 or right-click > Inspect)
+- Check the Console tab for any Firebase-related errors
+- Look for messages starting with "Firebase:" for specific error details
+
+### 5. Check environment variables
+
+- Make sure Next.js is properly loading your environment variables
+- Restart your development server after making changes to `.env.local`
+- Check that the NEXT*PUBLIC* prefix is used for all Firebase environment variables
+
+## Technologies Used
+
+- Next.js
+- React
+- Firebase Authentication
+- React Modal
+- Tailwind CSS
+
+## Deployment
+
+Follow the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) documentation for easy deployment.

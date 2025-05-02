@@ -22,7 +22,7 @@ const GamifySection = () => {
         <div className="w-[300px] h-[300px] relative">
           <div className="w-full h-full overflow-hidden rounded-lg">
             <Image
-              src="/assets/red-wolf.png"
+              src="/assets/38a6246671f4bb7763d30150dcc7c76e2e3abe3c (1).png"
               alt="Red Wolf"
               width={300}
               height={300}

@@ -10,6 +10,7 @@ import AmberSection from "./components/AmberSection";
 import BehavioralScience from "./components/BehavioralScience";
 import JoinQuest from "./components/JoinQuest";
 import FaqSection from "./components/FaqSection";
+import TestFirebase from "./lib/test-firebase";
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
       <div className="max-w-[1232px] mx-auto w-full">
         <Header />
         <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-14">
+          {/* Hidden Firebase diagnostic component */}
+          <TestFirebase />
+
           <Hero />
           <GamifySection />
           <ChangingTheGame />
@@ -28,7 +32,7 @@ export default function Home() {
           <JoinQuest />
           <FaqSection />
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

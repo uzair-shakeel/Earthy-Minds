@@ -8,7 +8,7 @@ const ImageComparison = () => {
         <div className="flex-1">
           <div className="w-full h-[240px] overflow-hidden rounded-lg mb-3">
             <Image
-              src="/assets/fading-nature.jpg"
+              src="/assets/fabd11153bf8e69e2f6f351934f24c8a7428ae3a.png"
               alt="Biolysium's nature is fading"
               width={480}
               height={240}
@@ -23,7 +23,7 @@ const ImageComparison = () => {
         <div className="flex-1">
           <div className="w-full h-[240px] overflow-hidden rounded-lg mb-3">
             <Image
-              src="/assets/renewed-nature.jpg"
+              src="/assets/f6780e8ddc87b5babe9f75ea2d6f362f0ddff984.png"
               alt="Your actions awaken life"
               width={480}
               height={240}

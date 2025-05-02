@@ -11,7 +11,7 @@ const AmberSection = () => {
       <div className="flex items-center gap-8 max-w-3xl mx-auto">
         <div className="w-[150px] h-[150px] flex-shrink-0">
           <Image
-            src="/assets/amber.png"
+            src="/assets/1f1a6ef6f23aad0085d94bfae410ca20e0a25635.png"
             alt="Amber gem"
             width={150}
             height={150}
