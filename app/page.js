@@ -1,36 +1,135 @@
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import GamifySection from "./components/GamifySection";
-import ChangingTheGame from "./components/ChangingTheGame";
-import ImageComparison from "./components/ImageComparison";
-import PlayImpactRepeat from "./components/PlayImpactRepeat";
-import NatureSpirits from "./components/NatureSpirits";
-import AmberSection from "./components/AmberSection";
-import BehavioralScience from "./components/BehavioralScience";
-import JoinQuest from "./components/JoinQuest";
-import FaqSection from "./components/FaqSection";
 import TestFirebase from "./lib/test-firebase";
+
+// Analytics wrapper - dynamically imported
+const AnalyticsWrapper = dynamic(() => import("./utils/AnalyticsWrapper"), {
+  ssr: false,
+});
+
+// Dynamically import components that aren't needed for initial page load
+const GamifySection = dynamic(() => import("./components/GamifySection"), {
+  ssr: true,
+  loading: () => (
+    <div className="h-72 bg-[#EDE8D0] animate-pulse rounded-lg"></div>
+  ),
+});
+const ChangingTheGame = dynamic(() => import("./components/ChangingTheGame"), {
+  ssr: true,
+});
+const ImageComparison = dynamic(() => import("./components/ImageComparison"), {
+  ssr: true,
+});
+const PlayImpactRepeat = dynamic(
+  () => import("./components/PlayImpactRepeat"),
+  { ssr: true }
+);
+const NatureSpirits = dynamic(() => import("./components/NatureSpirits"), {
+  ssr: true,
+});
+const AmberSection = dynamic(() => import("./components/AmberSection"), {
+  ssr: true,
+});
+const BehavioralScience = dynamic(
+  () => import("./components/BehavioralScience"),
+  { ssr: true }
+);
+const JoinQuest = dynamic(() => import("./components/JoinQuest"), {
+  ssr: true,
+});
+const FaqSection = dynamic(() => import("./components/FaqSection"), {
+  ssr: true,
+});
 
 export default function Home() {
   return (
-    <div className="w-full px-4 md:px-6 lg:px-8">
-      <div className="max-w-[1232px] mx-auto w-full">
-        <Header />
-        <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-14">
-          <Hero />
-          <GamifySection />
-          <ChangingTheGame />
-          <ImageComparison />
-          <PlayImpactRepeat />
-          <NatureSpirits />
-          <AmberSection />
-          <BehavioralScience />
-          <JoinQuest />
-          <FaqSection />
+    <AnalyticsWrapper pageName="home">
+      <div className="w-full px-4 md:px-6 lg:px-8">
+        <div className="max-w-[1232px] mx-auto w-full">
+          <Header />
+          <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-6 md:px-14">
+            {/* Hero section - this is loaded immediately */}
+            <Hero />
+
+            {/* Use Suspense for sections that can load progressively */}
+            <Suspense
+              fallback={
+                <div className="h-72 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <GamifySection />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-40 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <ChangingTheGame />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-60 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <ImageComparison />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-60 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <PlayImpactRepeat />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-40 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <NatureSpirits />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-40 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <AmberSection />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-40 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <BehavioralScience />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-40 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <JoinQuest />
+            </Suspense>
+
+            <Suspense
+              fallback={
+                <div className="h-80 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+              }
+            >
+              <FaqSection />
+            </Suspense>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
+    </AnalyticsWrapper>
   );
 }
