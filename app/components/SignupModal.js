@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
-import Image from "next/image";
 import { auth } from "../lib/firebase";
 import {
   createUserWithEmailAndPassword,
@@ -19,9 +18,8 @@ const customStyles = {
     backgroundColor: "#EDE8D0",
     borderRadius: "8px",
     padding: "30px",
-    height: "90%",
-    width: "90%",
-    maxWidth: "900px",
+    width: "400px",
+    maxWidth: "90%",
     border: "none",
   },
   overlay: {
@@ -36,21 +34,12 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
   const [error, setError] = useState("");
   const [isConfirmation, setIsConfirmation] = useState(false);
   const [modalReady, setModalReady] = useState(false);
-  const [firebaseStatus, setFirebaseStatus] = useState("initializing");
 
   // Wait until component is mounted to set the app element
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Use a specific div inside the modal as the app element
       Modal.setAppElement("#__next");
       setModalReady(true);
-
-      // Check Firebase auth status
-      if (auth) {
-        setFirebaseStatus("ready");
-      } else {
-        setFirebaseStatus("error");
-      }
     }
   }, []);
 
@@ -62,17 +51,11 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       return;
     }
 
-    if (firebaseStatus !== "ready") {
-      setError(
-        "Firebase authentication is not available. Please try again later."
-      );
-      return;
-    }
-
     setIsSubmitting(true);
     setError("");
 
     try {
+      console.log("Attempting to create user with Firebase:", email);
       // Create user with email in Firebase
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -80,15 +63,17 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         generateTempPassword()
       );
 
+      console.log("User created successfully, sending verification");
       // Send email verification
       await sendEmailVerification(userCredential.user);
+      console.log("Verification email sent");
 
       // Show confirmation modal
       setIsConfirmation(true);
     } catch (error) {
       console.error("Error signing up:", error);
 
-      // Handle specific Firebase errors
+      // Handle specific Firebase errors with clearer messages
       if (error.code === "auth/email-already-in-use") {
         setError(
           "This email is already registered. Please use a different email."
@@ -97,12 +82,24 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         setError("Please enter a valid email address.");
       } else if (error.code === "auth/configuration-not-found") {
         setError(
-          "Firebase configuration issue. Please check if Firebase is properly configured."
+          "Firebase configuration issue. Please ensure you've set up your Firebase project correctly."
+        );
+      } else if (error.code === "auth/admin-restricted-operation") {
+        setError(
+          "This operation is restricted. Make sure Email/Password authentication is enabled in your Firebase project."
+        );
+      } else if (error.code === "auth/operation-not-allowed") {
+        setError(
+          "Email/Password sign-up is not enabled. Please enable it in the Firebase Console."
         );
       } else if (error.code === "auth/network-request-failed") {
         setError("Network error. Please check your internet connection.");
       } else {
-        setError(`An error occurred: ${error.message || "Unknown error"}`);
+        setError(
+          `${error.message || "An error occurred during signup."} (${
+            error.code || "unknown"
+          })`
+        );
       }
     } finally {
       setIsSubmitting(false);
@@ -180,7 +177,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
 
             <button
               type="submit"
-              disabled={isSubmitting || firebaseStatus !== "ready"}
+              disabled={isSubmitting}
               className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold disabled:opacity-50"
             >
               {isSubmitting ? "Joining..." : "Join Quest"}
@@ -192,12 +189,6 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
             <br />
             and your first quest. No spam, ever.
           </p>
-
-          {firebaseStatus === "error" && (
-            <p className="mt-4 text-xs text-red-500">
-              Firebase connection issue. Please try again later.
-            </p>
-          )}
         </div>
       ) : (
         <div className="text-center">

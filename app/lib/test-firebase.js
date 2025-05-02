@@ -1,63 +1,66 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { initializeApp } from "firebase/app";
+import { auth } from "./firebase";
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
   signInAnonymously,
+  signOut,
+  getAuth,
+  onAuthStateChanged,
 } from "firebase/auth";
 
-// This component directly tests Firebase authentication without our abstraction layer
+// This component tests Firebase authentication using our shared instance
 export default function TestFirebase() {
   const [status, setStatus] = useState("Initializing...");
   const [error, setError] = useState(null);
+  const [authDetails, setAuthDetails] = useState({});
 
   useEffect(() => {
     const testFirebase = async () => {
       try {
-        // Direct Firebase config from environment variables
-        const firebaseConfig = {
-          apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-          authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-          projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-          storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-          messagingSenderId:
-            process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-          appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-        };
+        // Print Firebase configuration information (without sensitive details)
+        setStatus("Checking Firebase configuration...");
 
-        setStatus(
-          "Config loaded: " +
-            JSON.stringify(
-              Object.fromEntries(
-                Object.entries(firebaseConfig).map(([key, value]) => [
-                  key,
-                  value ? `${value.substring(0, 3)}...` : "missing",
-                ])
-              )
-            )
-        );
+        if (!auth) {
+          setStatus("Error: Firebase auth is not initialized");
+          return;
+        }
 
-        // Initialize Firebase directly
-        const app = initializeApp(firebaseConfig, "directTest");
-        setStatus("Firebase initialized successfully");
+        // Display Firebase auth details
+        setAuthDetails({
+          authDomain: auth.config?.authDomain || "Not available",
+          apiKey: auth.app.options.apiKey ? "Configured" : "Not configured",
+          projectId: auth.app.options.projectId || "Not available",
+        });
 
-        // Get auth
-        const auth = getAuth(app);
-        setStatus("Auth obtained");
+        setStatus("Testing anonymous authentication...");
 
         // Try a basic Firebase operation - anonymous sign in
         try {
-          await signInAnonymously(auth);
-          setStatus("Firebase authentication working! 🎉");
+          const userCredential = await signInAnonymously(auth);
+          setStatus(
+            `Firebase authentication working! Anonymous user created with ID: ${userCredential.user.uid}`
+          );
+
+          // Sign out the anonymous user
+          await signOut(auth);
+          setStatus("Anonymous authentication successful, user signed out");
         } catch (authError) {
+          console.error("Auth test error:", authError);
           setStatus(`Firebase auth test failed: ${authError.code}`);
           setError(authError);
+
+          // Provide specific guidance for common errors
+          if (authError.code === "auth/admin-restricted-operation") {
+            setStatus(
+              "Error: Anonymous sign-in is disabled. Please enable Anonymous authentication in your Firebase project."
+            );
+          }
         }
-      } catch (initError) {
-        setStatus("Firebase initialization failed");
-        setError(initError);
+      } catch (error) {
+        console.error("Test failed:", error);
+        setStatus("Firebase test failed with unexpected error");
+        setError(error);
       }
     };
 
@@ -65,9 +68,36 @@ export default function TestFirebase() {
   }, []);
 
   return (
-    <div className="hidden">
-      {/* Hidden from UI but visible in console */}
-      <pre>{JSON.stringify({ status, error: error?.message }, null, 2)}</pre>
+    <div className="mb-6 p-3 bg-amber-100 text-amber-900 rounded-md">
+      <h3 className="font-bold">Firebase Connection Status</h3>
+      <p>{status}</p>
+
+      {Object.keys(authDetails).length > 0 && (
+        <div className="mt-2 text-sm">
+          <p>
+            <strong>Firebase Settings:</strong>
+          </p>
+          <ul className="list-disc list-inside pl-2">
+            <li>Project ID: {authDetails.projectId}</li>
+            <li>Auth Domain: {authDetails.authDomain}</li>
+            <li>API Key: {authDetails.apiKey}</li>
+          </ul>
+        </div>
+      )}
+
+      {error && (
+        <div className="mt-2">
+          <p className="text-red-500 font-semibold">
+            Error: {error.code || "Unknown error"}
+          </p>
+          <p className="text-red-500 text-sm">{error.message}</p>
+          <p className="mt-2 text-sm">
+            <strong>Troubleshooting:</strong> Ensure you've created a new
+            Firebase project and enabled both Email/Password and Anonymous
+            authentication in the Firebase Console.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

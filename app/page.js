@@ -18,9 +18,6 @@ export default function Home() {
       <div className="max-w-[1232px] mx-auto w-full">
         <Header />
         <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-14">
-          {/* Hidden Firebase diagnostic component */}
-          <TestFirebase />
-
           <Hero />
           <GamifySection />
           <ChangingTheGame />

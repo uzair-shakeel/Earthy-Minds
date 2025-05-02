@@ -1,74 +1,26 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, getApps } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-// Your web app's Firebase configuration
+// Your NEW Firebase project configuration
+// You must replace these placeholder values with the config from YOUR new Firebase project
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCkmuikES9HqBe7KFSHfOJPTS60wX1LOHo",
+  authDomain: "prequalification-form-e1360.firebaseapp.com",
+  databaseURL:
+    "https://prequalification-form-e1360-default-rtdb.firebaseio.com",
+  projectId: "prequalification-form-e1360",
+  storageBucket: "prequalification-form-e1360.firebasestorage.app",
+  messagingSenderId: "485907865379",
+  appId: "1:485907865379:web:d5a158c7760e2afee6f696",
+  measurementId: "G-EVN8SBHZF3",
 };
 
-// Check if Firebase config is properly loaded
-const isFirebaseConfigValid = () => {
-  const requiredFields = [
-    "apiKey",
-    "authDomain",
-    "projectId",
-    "storageBucket",
-    "messagingSenderId",
-    "appId",
-  ];
+// Initialize Firebase with the new config
+const firebaseApp = initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(firebaseApp);
 
-  const missingFields = requiredFields.filter(
-    (field) => !firebaseConfig[field]
-  );
+console.log("Firebase initialized with NEW project:", firebaseConfig.projectId);
 
-  if (missingFields.length > 0) {
-    console.error(
-      `Missing Firebase config fields: ${missingFields.join(", ")}`
-    );
-    return false;
-  }
-
-  return true;
-};
-
-// Initialize Firebase - properly handle SSR
-let app;
-let auth;
-
-// Only initialize in client-side environment
-if (typeof window !== "undefined") {
-  // Log the Firebase config for debugging (don't do this in production)
-  console.log(
-    "Initializing Firebase with config:",
-    Object.keys(firebaseConfig).reduce((acc, key) => {
-      acc[key] = firebaseConfig[key]
-        ? `${firebaseConfig[key].substring(0, 5)}...`
-        : "missing";
-      return acc;
-    }, {})
-  );
-
-  if (!getApps().length && isFirebaseConfigValid()) {
-    try {
-      app = initializeApp(firebaseConfig);
-      auth = getAuth(app);
-      console.log("Firebase initialized successfully");
-    } catch (error) {
-      console.error("Firebase initialization error:", error);
-    }
-  } else if (getApps().length) {
-    app = getApps()[0]; // if already initialized, use that one
-    auth = getAuth(app);
-    console.log("Firebase already initialized, reusing existing app");
-  } else {
-    console.error("Unable to initialize Firebase - invalid config");
-  }
-}
-
-export { app, auth };
+// Export the initialized instances
+export { firebaseApp as app, firebaseAuth as auth };

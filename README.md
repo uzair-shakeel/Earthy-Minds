@@ -10,25 +10,23 @@ First, install the dependencies:
 npm install
 ```
 
-## Firebase Authentication Setup
+## Firebase Authentication
 
-This project uses Firebase Authentication for user signup and email verification. Follow these steps to set up Firebase:
+This project uses Firebase Authentication for user signup and email verification. The Firebase configuration is hardcoded in the app for simplicity. If you want to use your own Firebase project, you'll need to update the configuration in the following files:
+
+1. `app/lib/firebase.js` - The main Firebase initialization file
+2. `app/lib/test-firebase.js` - The Firebase test utility
+
+### Setting Up Your Own Firebase Project
+
+If you want to use your own Firebase project instead of the default one:
 
 1. Go to [Firebase Console](https://console.firebase.google.com/) and create a new project
 2. Add a web app to your Firebase project
 3. Enable Email/Password authentication in the Authentication section
 4. Set up the Email verification template in Authentication > Templates
 5. Copy your Firebase configuration from Project Settings
-6. Create a `.env.local` file in your project root with the following values from your Firebase project:
-
-```
-NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
-NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
-```
+6. Replace the hardcoded values in `app/lib/firebase.js` and `app/lib/test-firebase.js`
 
 ## Running the Development Server
 
@@ -46,40 +44,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Responsive design matching the provided mockups
 - Eco-habit tracking gamification concept
 
-## Detailed Firebase Authentication Troubleshooting
+## Troubleshooting Firebase Authentication
 
 If you encounter issues with Firebase authentication:
 
-### 1. Check your Firebase project and configuration
-
-- Verify that your Firebase API key and configuration in `.env.local` is correct
-- Make sure the project values match exactly with what's in your Firebase Console
-- Check that all required fields are present in the configuration
-
-### 2. Verify Firebase Authentication settings
-
-- Ensure Email/Password authentication is enabled in your Firebase project
-- Go to the Authentication section in Firebase Console and check "Sign-in method"
-- Verify that Email/Password is enabled with the toggle switch
-
-### 3. Common Firebase error codes and solutions
-
-- `auth/configuration-not-found`: This usually means your Firebase project ID or API key is incorrect
-- `auth/network-request-failed`: Check your internet connection
-- `auth/email-already-in-use`: The email is already registered
-- `auth/invalid-email`: The email format is incorrect
-
-### 4. Web browser console debugging
-
-- Open your browser's developer tools (F12 or right-click > Inspect)
-- Check the Console tab for any Firebase-related errors
-- Look for messages starting with "Firebase:" for specific error details
-
-### 5. Check environment variables
-
-- Make sure Next.js is properly loading your environment variables
-- Restart your development server after making changes to `.env.local`
-- Check that the NEXT*PUBLIC* prefix is used for all Firebase environment variables
+1. Make sure the Firebase project is active and properly configured
+2. Verify that Email/Password authentication is enabled in your Firebase project
+3. Check the browser console for any Firebase-related errors
+4. If using your own Firebase project, make sure the configuration values are correct
+5. Check that the domain you're testing from is allowed in Firebase Authentication settings
 
 ## Technologies Used
 
