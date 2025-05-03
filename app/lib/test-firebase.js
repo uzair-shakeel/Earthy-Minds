@@ -9,7 +9,6 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-// This component tests Firebase authentication using our shared instance
 export default function TestFirebase() {
   const [status, setStatus] = useState("Initializing...");
   const [error, setError] = useState(null);
@@ -18,7 +17,6 @@ export default function TestFirebase() {
   useEffect(() => {
     const testFirebase = async () => {
       try {
-        // Print Firebase configuration information (without sensitive details)
         setStatus("Checking Firebase configuration...");
 
         if (!auth) {
@@ -26,7 +24,6 @@ export default function TestFirebase() {
           return;
         }
 
-        // Display Firebase auth details
         setAuthDetails({
           authDomain: auth.config?.authDomain || "Not available",
           apiKey: auth.app.options.apiKey ? "Configured" : "Not configured",
@@ -35,14 +32,12 @@ export default function TestFirebase() {
 
         setStatus("Testing anonymous authentication...");
 
-        // Try a basic Firebase operation - anonymous sign in
         try {
           const userCredential = await signInAnonymously(auth);
           setStatus(
             `Firebase authentication working! Anonymous user created with ID: ${userCredential.user.uid}`
           );
 
-          // Sign out the anonymous user
           await signOut(auth);
           setStatus("Anonymous authentication successful, user signed out");
         } catch (authError) {
@@ -50,7 +45,6 @@ export default function TestFirebase() {
           setStatus(`Firebase auth test failed: ${authError.code}`);
           setError(authError);
 
-          // Provide specific guidance for common errors
           if (authError.code === "auth/admin-restricted-operation") {
             setStatus(
               "Error: Anonymous sign-in is disabled. Please enable Anonymous authentication in your Firebase project."

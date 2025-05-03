@@ -5,12 +5,10 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TestFirebase from "./lib/test-firebase";
 
-// Analytics wrapper - dynamically imported
 const AnalyticsWrapper = dynamic(() => import("./utils/AnalyticsWrapper"), {
   ssr: false,
 });
 
-// Dynamically import components that aren't needed for initial page load
 const GamifySection = dynamic(() => import("./components/GamifySection"), {
   ssr: true,
   loading: () => (
@@ -51,10 +49,8 @@ export default function Home() {
         <div className="max-w-[1232px] mx-auto w-full">
           <Header />
           <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-6 md:px-14">
-            {/* Hero section - this is loaded immediately */}
             <Hero />
 
-            {/* Use Suspense for sections that can load progressively */}
             <Suspense
               fallback={
                 <div className="h-72 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>

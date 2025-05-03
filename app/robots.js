@@ -6,8 +6,8 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
       disallow: [
-        "/auth/", // Don't index auth-related pages
-        "/api/", // Don't index API routes
+        "/auth/",  
+        "/api/", 
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,

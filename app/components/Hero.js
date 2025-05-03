@@ -12,7 +12,7 @@ const Hero = () => {
 
   const images = [
     {
-      src: "/assets/habit-tracker.png",
+      src: "/assets/natures-deeds.svg",
       alt: "Habit Tracker App Screen",
     },
     {

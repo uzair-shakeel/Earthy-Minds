@@ -9,7 +9,6 @@ export const metadata = {
     "Explore our latest articles on sustainability, eco habits, and the world of Biolysium.",
 };
 
-// Placeholder blog posts
 const PLACEHOLDER_POSTS = [
   {
     id: "future-post-1",

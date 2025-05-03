@@ -3,7 +3,6 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-// Set comprehensive metadata for the app
 export const metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com"
@@ -32,7 +31,6 @@ export const metadata = {
   themeColor: "#EDE8D0",
   colorScheme: "light",
 
-  // Open Graph / Facebook
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -43,7 +41,7 @@ export const metadata = {
       "Turn real-world eco actions into quests. Level up. Save nature.",
     images: [
       {
-        url: "/assets/og-image.jpg", // Be sure to create this image
+        url: "/assets/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Earthy Minds - Rise of the Wild",
@@ -57,20 +55,10 @@ export const metadata = {
     title: "Earthy Minds - Rise of the Wild",
     description:
       "Turn real-world eco actions into quests. Level up. Save nature.",
-    images: ["/assets/og-image.jpg"], // Same as OG image
+    images: ["/assets/og-image.jpg"],
     creator: "@earthyminds",
   },
 
-  // Alternative languages - add these when you have multilingual support
-  // alternates: {
-  //   canonical: "/",
-  //   languages: {
-  //     'en-US': "/en-US",
-  //     'es-ES': "/es-ES",
-  //   },
-  // },
-
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -82,11 +70,7 @@ export const metadata = {
     },
   },
 
-  // Verification for Google Search Console and other services
   verification: {
-    // google: "your-google-site-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
   },
 };
 
@@ -98,7 +82,6 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
         </div>
 
-        {/* Structured data for better SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -112,9 +95,8 @@ export default function RootLayout({ children }) {
                 process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com",
               potentialAction: {
                 "@type": "SearchAction",
-                target: `${
-                  process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com"
-                }/search?q={search_term_string}`,
+                target: `${process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com"
+                  }/search?q={search_term_string}`,
                 "query-input": "required name=search_term_string",
               },
             }),
@@ -130,17 +112,15 @@ export default function RootLayout({ children }) {
         {/* Add Google Analytics */}
         <Script
           strategy="lazyOnload"
-          src={`https://www.googletagmanager.com/gtag/js?id=${
-            process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-PLACEHOLDER"
-          }`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-PLACEHOLDER"
+            }`}
         />
         <Script strategy="lazyOnload" id="ga-script">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${
-              process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-PLACEHOLDER"
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-PLACEHOLDER"
             }', {
               page_path: window.location.pathname,
             });
