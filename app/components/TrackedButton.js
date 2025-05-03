@@ -2,9 +2,6 @@
 
 import { trackButtonClick } from "../utils/analytics";
 
-/**
- * A button component that automatically tracks clicks with analytics
- */
 export default function TrackedButton({
   children,
   onClick,
@@ -14,13 +11,11 @@ export default function TrackedButton({
   ...props
 }) {
   const handleClick = (e) => {
-    // Track the button click
     trackButtonClick(
       name || children?.toString() || "unnamed-button",
       location
     );
 
-    // Call the original onClick handler if provided
     if (onClick) {
       onClick(e);
     }

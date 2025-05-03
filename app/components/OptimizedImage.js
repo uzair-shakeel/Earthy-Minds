@@ -3,13 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-/**
- * OptimizedImage component that handles:
- * - Lazy loading
- * - Blur placeholder
- * - Progressive loading
- * - Responsive sizing
- */
 export default function OptimizedImage({
   src,
   alt,
@@ -20,17 +13,15 @@ export default function OptimizedImage({
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Generate blur placeholder color based on the src string
   const generateColorFromSrc = (src) => {
     let hash = 0;
     for (let i = 0; i < src.length; i++) {
       hash = src.charCodeAt(i) + ((hash << 5) - hash);
     }
 
-    // Generate pastel colors for better aesthetics
     const h = Math.abs(hash) % 360;
-    const s = 25 + 70 * Math.abs(Math.cos(hash)); // 25-95%
-    const l = 85 + 10 * Math.abs(Math.sin(hash)); // 85-95%
+    const s = 25 + 70 * Math.abs(Math.cos(hash)); 
+    const l = 85 + 10 * Math.abs(Math.sin(hash)); 
 
     return `hsl(${h}, ${Math.floor(s)}%, ${Math.floor(l)}%)`;
   };
