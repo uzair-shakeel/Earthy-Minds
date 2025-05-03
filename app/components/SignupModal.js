@@ -18,7 +18,7 @@ const customStyles = {
     backgroundColor: "#EDE8D0",
     borderRadius: "8px",
     padding: "30px",
-    height: "697px",
+    height: "600px",
     width: "100%",
     maxWidth: "90%",
     border: "none",
@@ -149,7 +149,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
 
       {!isConfirmation ? (
         <div className="text-center">
-          <h2 className="font-cinzel text-2xl font-bold mb-6">
+          <h2 className="font-cinzel text-[16px] sm:text-[28px] font-bold mb-7">
             Join The Fellowship of
             <br />
             Earthy Minds. Your sign-up
@@ -165,7 +165,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="w-full max-w-[350px] p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-orange"
+              className="w-full max-w-[350px] pb-1 px-4 h-[50px] mb-4 border border-black rounded-lg focus:outline-none focus:border-orange"
               required
             />
 
@@ -174,13 +174,13 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold disabled:opacity-50"
+              className="mt-4 sm:mt-6 font-cinzel text-black border-2 border-black bg-orange w-[121px] h-[39px] rounded-lg text-[16px] font-bold disabled:opacity-50"
             >
               {isSubmitting ? "Joining..." : "Join Quest"}
             </button>
           </form>
 
-          <p className="text-sm font-lora mt-6">
+          <p className="text-sm font-bold font-lora mt-[58px]">
             We'll only send game updates, early access
             <br />
             and your first quest. No spam, ever.
@@ -188,22 +188,22 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         </div>
       ) : (
         <div className="text-center">
-          <h2 className="font-cinzel text-2xl font-bold mb-6">
+          <h2 className="font-cinzel max-w-[300px] mx-auto text-[20px] sm:text-[28px] font-bold mb-6">
             You're Almost There...
           </h2>
 
-          <div className="mb-6">
-            <p className="font-lora mb-6">
+          <div className="mb-6 max-w-[375px]">
+            <p className="text-[16px] sm:text-[22px] font-bold font-lora">
               Check your inbox now and confirm your email.
             </p>
-            <p className="font-lora">
+            <p className="text-[16px] sm:text-[22px] font-bold font-lora">
               This keeps your quest emails out of the spam woods.
             </p>
           </div>
 
           <button
             onClick={closeModal}
-            className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold mt-4"
+            className="font-cinzel text-black border-2 border-black bg-orange w-[121px] h-[40px] rounded-lg text-[16px] font-bold mt-4"
           >
             Close
           </button>
