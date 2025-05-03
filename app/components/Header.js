@@ -11,7 +11,7 @@ const Header = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="h-20 sm:h-[100px] md:h-[150px] w-full flex items-center justify-between gap-6">
+    <div className="h-20 mb-3 md:mb-0 sm:h-[100px] md:h-[150px] w-full flex items-center justify-between gap-6">
       <div className="flex items-center gap-2">
         <Image
           src="/assets/logo.png"
