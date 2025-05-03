@@ -18,9 +18,13 @@ const customStyles = {
     backgroundColor: "#EDE8D0",
     borderRadius: "8px",
     padding: "30px",
-    width: "400px",
+    height: "697px",
+    width: "100%",
     maxWidth: "90%",
     border: "none",
+    display:"flex",
+    alignItems:"center",
+    justifyContent: "center"
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -35,7 +39,6 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
   const [isConfirmation, setIsConfirmation] = useState(false);
   const [modalReady, setModalReady] = useState(false);
 
-  // Wait until component is mounted to set the app element
   useEffect(() => {
     if (typeof window !== "undefined") {
       Modal.setAppElement("#__next");
@@ -56,7 +59,6 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
 
     try {
       console.log("Attempting to create user with Firebase:", email);
-      // Create user with email in Firebase
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -64,16 +66,13 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       );
 
       console.log("User created successfully, sending verification");
-      // Send email verification
       await sendEmailVerification(userCredential.user);
       console.log("Verification email sent");
 
-      // Show confirmation modal
       setIsConfirmation(true);
     } catch (error) {
       console.error("Error signing up:", error);
 
-      // Handle specific Firebase errors with clearer messages
       if (error.code === "auth/email-already-in-use") {
         setError(
           "This email is already registered. Please use a different email."
@@ -96,8 +95,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         setError("Network error. Please check your internet connection.");
       } else {
         setError(
-          `${error.message || "An error occurred during signup."} (${
-            error.code || "unknown"
+          `${error.message || "An error occurred during signup."} (${error.code || "unknown"
           })`
         );
       }
@@ -106,7 +104,6 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
     }
   };
 
-  // Generate a random temporary password for account creation
   const generateTempPassword = () => {
     return Math.random().toString(36).slice(-12);
   };
@@ -118,7 +115,6 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
     onRequestClose();
   };
 
-  // Don't render the modal until we're ready on the client side
   if (!modalReady) return null;
 
   return (
@@ -127,7 +123,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="Signup Modal"
-      ariaHideApp={false} // This prevents the aria-hidden warning
+      ariaHideApp={false}
     >
       <button
         onClick={closeModal}

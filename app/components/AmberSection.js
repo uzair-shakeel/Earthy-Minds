@@ -3,32 +3,24 @@ import Image from "next/image";
 
 const AmberSection = () => {
   return (
-    <div className="mt-16 mb-12">
-      <h2 className="text-3xl font-bold font-cinzel mb-6 text-center">
-        Amber: Currency of Real Change
-      </h2>
-
-      <div className="flex items-center gap-8 max-w-3xl mx-auto">
-        <div className="w-[150px] h-[150px] flex-shrink-0">
+    <div className="flex items-center md:flex-row flex-col-reverse gap-6 md:gap-10 max-w-[1020px] mx-auto">
           <Image
-            src="/assets/1f1a6ef6f23aad0085d94bfae410ca20e0a25635.png"
-            alt="Amber gem"
-            width={150}
-            height={150}
-            className="w-full h-full object-contain"
+            src="/assets/amber-currency-of-real-change.png"
+            alt="amber-currency-of-real-change"
+            width={200}
+            height={200}
+            className="sm:w-[200px] sm:h-[200px] w-24 h-24"
           />
+    
+          <div className="flex-1">
+            <h2 className="text-[14px] sm:text-[22px] lg:text-[26px] font-bold font-cinzel md:text-left text-center mb-2">
+            Amber: Currency of Real Change
+            </h2>
+            <p className="text-[12px] sm:text-[20px] lg:text-[22px] font-bold font-lora">
+            More valuable than gold, because every nugget is backed by nature-positive impact. Amber awakens new animal heroes and helps to restore balance between worlds. Earn by doing Nature’s Deeds- real life eco actions.
+            </p>
+          </div>
         </div>
-
-        <div className="flex-1">
-          <p className="text-lg font-lora">
-            More valuable than gold, because every nugget is backed by
-            nature-positive impact. Amber awakens new animal heroes and helps to
-            restore balance between worlds. Earn by doing Nature's Deeds- real
-            life eco actions.
-          </p>
-        </div>
-      </div>
-    </div>
   );
 };
 

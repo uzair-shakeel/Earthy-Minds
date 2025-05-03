@@ -31,8 +31,8 @@ export default function ImageSlider({ images }) {
      }, []);
 
      return (
-          <div className="relative w-[435px] h-[714px]">
-               <div className="relative w-[329px] h-[714px] mx-auto">
+          <div className="relative w-[320px] sm:w-[435px] h-[448px] sm:h-[714px]">
+               <div className="relative w-[207px] sm:w-[329px] h-[448px] sm:h-[714px] mx-auto">
                     {images.map((image, index) => (
                          <div
                               key={index}
@@ -74,7 +74,6 @@ export default function ImageSlider({ images }) {
                     <ArrowRight />
                </button>
 
-               {/* Page indicator at bottom (optional) */}
                <div className='w-full flex items-center justify-center'>
                     <div className="text-black py-1 text-base font-bold font-lora">
                          {currentIndex + 1}/{images.length}

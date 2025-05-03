@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import AuthErrorClient from "./AuthErrorClient";
 import Image from "next/image";
 
-// Export this as a static page - the dynamic functionality will be handled by the client component
 export const dynamic = "force-static";
 
 export default function AuthErrorPage() {

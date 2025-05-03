@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ImageSlider from "./ImageSlider";
-import Image from "next/image";
 import SignupModal from "./SignupModal";
+import VideoPlayer from "./VideoPlayer";
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,49 +28,44 @@ const Hero = () => {
       alt: "Nature's Deeds Environment Challenge Screen",
     },
   ];
+
+ 
   return (
     <div className="mb-16">
-      <div className="flex items-start justify-between gap-8">
-        <div className="max-w-[450px]">
-          <h1 className="text-black text-[32px] font-bold font-cinzel mb-4">
+      <div className="flex items-center mlg:items-start justify-between mlg:flex-row flex-col gap-10 mlg:gap-4">
+        <div className="w-full">
+          <h1 className="text-black text-center text-[16px] sm:text-[20px] lg:text-[28px] font-bold font-cinzel mb-3 lg:mb-5">
             Eco Habit Tracker meets Fantasy Adventure
           </h1>
-          <p className="text-center text-[20px] font-medium font-lora mt-3 leading-[130%] mb-6">
+          <p className="text-center  text-sm sm:text-[20px] lg:text-[24px] font-bold font-lora leading-[110%]">
             Turn real-world actions into quests.
             <br />
             Level up. Save nature.
           </p>
 
-          <div className="relative my-8">
+          <div className="relative my-10">
             <div className="flex justify-center">
-              <p className="text-center font-cinzel text-xl font-bold mb-4">
+              <p className="text-center font-lora text-[16px] sm:text-[24px] lg:text-[28px] font-bold mb-4"> 
                 Watch trailer
               </p>
             </div>
-            <div className="relative w-full h-[200px] flex justify-center">
-              <div className="w-[300px] h-[200px] rounded-lg overflow-hidden bg-black relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button className="w-16 h-16 rounded-full bg-orange flex items-center justify-center">
-                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-black border-b-[10px] border-b-transparent ml-1"></div>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <VideoPlayer/>
           </div>
-          <p className="text-center text-black font-lora text-sm mt-6 mb-6">
+          <p className="text-center text-black font-bold font-lora text-[15px] lg:text-[20px] mt-6 ">
             Your signup helps bring this game to life.
             <br />
             Without you, the magic won't happen!
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-2">
             <button
               onClick={openModal}
-              className="font-cinzel text-black border-2 border-black bg-orange w-[164px] h-[50px] rounded-lg text-[20px] font-bold"
+              className="font-cinzel text-black border-2 border-black bg-orange w-[121px] md:w-[164px] h-10 md:h-[50px] rounded-lg text-base md:text-[20px] font-bold"
             >
               Join Quest
             </button>
           </div>
         </div>
+
         <div className="flex-shrink-0">
           <ImageSlider images={images} />
         </div>

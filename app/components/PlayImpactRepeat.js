@@ -2,70 +2,15 @@ import React from "react";
 
 const PlayImpactRepeat = () => {
   return (
-    <div className="mt-16 mb-12">
-      <h2 className="text-3xl font-bold font-cinzel mb-8 text-center">
-        Play, Impact, Repeat
-      </h2>
+    <div className="mt-10 md:mt-16 mb-12 max-w-[1080px] w-full mx-auto">
+      <h2 className="text-sm sm:text-[26px] font-bold font-cinzel mb-3 md:mb-6 text-center">Play, Impact, Repeat</h2>
 
-      <ul className="space-y-5 max-w-3xl mx-auto">
-        <li className="flex items-start gap-2">
-          <span className="text-xl font-bold">•</span>
-          <div>
-            <span className="font-bold font-lora">
-              Make Sustainability Fun –{" "}
-            </span>
-            <span className="font-lora">
-              No guilt trips, no lectures: just an uplifting adventure.
-            </span>
-          </div>
-        </li>
-
-        <li className="flex items-start gap-2">
-          <span className="text-xl font-bold">•</span>
-          <div>
-            <span className="font-bold font-lora">
-              Real Change, Real Impact –{" "}
-            </span>
-            <span className="font-lora">
-              See your progress, both in-game and in the real world. Every
-              action contributes to something bigger.
-            </span>
-          </div>
-        </li>
-
-        <li className="flex items-start gap-2">
-          <span className="text-xl font-bold">•</span>
-          <div>
-            <span className="font-bold font-lora">Everyone Has a Role – </span>
-            <span className="font-lora">
-              No matter your background or level of commitment, everyone is
-              welcome.
-            </span>
-          </div>
-        </li>
-
-        <li className="flex items-start gap-2">
-          <span className="text-xl font-bold">•</span>
-          <div>
-            <span className="font-bold font-lora">Power in Community – </span>
-            <span className="font-lora">
-              Alone, change can feel small but together we shape the future.
-              From friendly competition to team quests, our community drives
-              real-world conservation.
-            </span>
-          </div>
-        </li>
-
-        <li className="flex items-start gap-2">
-          <span className="text-xl font-bold">•</span>
-          <div>
-            <span className="font-bold font-lora">Hope Beats Fear – </span>
-            <span className="font-lora">
-              Real change comes from being inspired and hopeful, not scare
-              tactics. We inspire action by focusing on progress and solutions.
-            </span>
-          </div>
-        </li>
+      <ul className="space-y-3 md:space-y-5 list-disc ml-4">
+        <li className="text-black text-[12px] sm:text-[18px] md:text-[22px] font-bold font-lora">Make Sustainability Fun – No guilt trips, no lectures: just an uplifting adventure.</li>
+        <li className="text-black text-[12px] sm:text-[18px] md:text-[22px] font-bold font-lora">Real Change, Real Impact – See your progress, both in-game and in the real world. Every action contributes to something bigger.</li>
+        <li className="text-black text-[12px] sm:text-[18px] md:text-[22px] font-bold font-lora">Everyone Has a Role – No matter your background or level of commitment, everyone is welcome.</li>
+        <li className="text-black text-[12px] sm:text-[18px] md:text-[22px] font-bold font-lora">Power in Community – Alone, change can feel small but together we shape the future. From friendly competition to team quests, our community drives real-world conservation.</li>
+        <li className="text-black text-[12px] sm:text-[18px] md:text-[22px] font-bold font-lora">Hope Beats Fear – Real change comes from being inspired and hopeful, not scare tactics. We inspire action by focusing on progress and solutions.</li>
       </ul>
     </div>
   );

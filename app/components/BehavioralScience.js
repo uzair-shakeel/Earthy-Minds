@@ -3,29 +3,24 @@ import Image from "next/image";
 
 const BehavioralScience = () => {
   return (
-    <div className="mt-16 mb-12">
-      <h2 className="text-3xl font-bold font-cinzel mb-6 text-center">
-        Backed by Behavioral Science
-      </h2>
+    <div className="mt-8 md:mt-12 mb-12 flex items-center md:flex-row flex-col-reverse gap-6 md:gap-10 max-w-[1020px] mx-auto">
+      <Image
+        src="/assets/backed-by-behavioral-science.png"
+        alt="backed-by-behavioral-science"
+        width={200}
+        height={200}
+        className="sm:w-[200px] sm:h-[200px] w-24 h-24"
+      />
 
-      <div className="flex items-center gap-8 max-w-3xl mx-auto">
-        <div className="w-[150px] h-[150px] flex-shrink-0">
-          <Image
-            src="/assets/d18b1bbe052ead005f446bdd95028aec7ad709a5.png"
-            alt="Book"
-            width={150}
-            height={150}
-            className="w-full h-full object-contain"
-          />
-        </div>
-
-        <div className="flex-1">
-          <p className="text-lg font-lora">
-            Inspired by proven behavior change methods: drawing from BJ Fogg's
-            Behavior Model and the global bestseller Atomic Habits by James
-            Clear.
-          </p>
-        </div>
+      <div className="flex-1">
+        <h2 className="text-[14px] sm:text-[22px] lg:text-[26px] font-bold font-cinzel md:text-left text-center mb-2">
+          Backed by Behavioral Science
+        </h2>
+        <p className="text-[12px] sm:text-[20px] lg:text-[22px] font-bold font-lora">
+          Inspired by proven behavior change methods: drawing from BJ Fogg's
+          Behavior Model and the global bestseller Atomic Habits by James
+          Clear.
+        </p>
       </div>
     </div>
   );

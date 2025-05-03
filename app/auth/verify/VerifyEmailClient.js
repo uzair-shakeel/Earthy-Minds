@@ -11,7 +11,6 @@ export default function VerifyEmailClient() {
   const [status, setStatus] = useState("verifying");
   const [error, setError] = useState(null);
 
-  // Get the action code from the URL
   const actionCode = searchParams.get("oobCode");
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export default function VerifyEmailClient() {
       }
 
       try {
-        // Apply the verification code
         await applyActionCode(auth, actionCode);
         setStatus("success");
       } catch (error) {

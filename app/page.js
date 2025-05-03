@@ -48,7 +48,7 @@ export default function Home() {
       <div className="w-full px-4 md:px-6 lg:px-8">
         <div className="max-w-[1232px] mx-auto w-full">
           <Header />
-          <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-6 md:px-14">
+          <div className="bg-[#EDE8D0] w-full mx-auto rounded-[10px] py-14 px-6 md:px-8 lg:px-12">
             <Hero />
 
             <Suspense
@@ -117,7 +117,7 @@ export default function Home() {
 
             <Suspense
               fallback={
-                <div className="h-80 bg-[#EDE8D0]/50 animate-pulse rounded-lg"></div>
+                <div className="h-80 bg-[#B3853E4A] animate-pulse rounded-lg"></div>
               }
             >
               <FaqSection />

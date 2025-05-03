@@ -30,16 +30,16 @@ const FaqSection = () => {
   ];
 
   return (
-    <div className="mt-16 mb-12 bg-[#EAE2C9] p-8 rounded-lg">
-      <h2 className="text-3xl font-bold font-cinzel mb-8 text-center">FAQ</h2>
+    <div className="max-w-[872px] w-full mx-auto my-10 md:mt-[94px] md:mb-[99px] md:bg-[#B3853E4A]/30 md:border border-[#B3853E] md:p-8 rounded-[10px]">
+      <h2 className="text-2xl md:text-3xl font-bold font-cinzel mb-4 md:mb-6">FAQ</h2>
 
       <div className="space-y-6">
         {faqs.map((faq, index) => (
-          <div key={index} className="mb-6">
-            <p className="text-lg font-bold font-lora mb-2">
+          <div key={index}>
+            <h3 className="text-sm sm:text-xl font-bold font-lora mb-2">
               {index + 1}. {faq.question}
-            </p>
-            <p className="text-lg font-lora">{faq.answer}</p>
+            </h3>
+            <p className="text-sm sm:text-xl font-semibold font-lora">{faq.answer}</p>
           </div>
         ))}
       </div>
