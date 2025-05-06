@@ -15,13 +15,8 @@ export default function AnalyticsWrapper({ children, pageName }) {
     // Report web vitals
     reportWebVitals();
 
-    console.log(
-      `Analytics tracking initialized for page: ${pageName || "unknown"}`
-    );
-
     // Add navigation change listener for SPA navigation
     const handleRouteChange = (url) => {
-      console.log(`Analytics: Route changed to ${url}`);
       trackPageView(url);
     };
 

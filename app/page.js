@@ -9,10 +9,6 @@ const AnalyticsWrapper = dynamic(() => import("./utils/AnalyticsWrapper"), {
   ssr: false,
 });
 
-const AnalyticsDebugger = dynamic(() => import("./utils/AnalyticsDebugger"), {
-  ssr: false,
-});
-
 const GamifySection = dynamic(() => import("./components/GamifySection"), {
   ssr: true,
   loading: () => (
@@ -130,9 +126,6 @@ export default function Home() {
           <Footer />
         </div>
       </div>
-
-      {/* Analytics Debugger - Only visible in development */}
-      {process.env.NODE_ENV !== "production" && <AnalyticsDebugger />}
     </AnalyticsWrapper>
   );
 }

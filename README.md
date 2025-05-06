@@ -41,14 +41,7 @@ This project uses Google Analytics for tracking user interactions. The Google An
 
 To test Google Analytics integration:
 
-1. **In Development Mode**:
-
-   - A debug panel is automatically available in the bottom right corner of the screen in development mode
-   - Click the 📊 icon to open the debugger
-   - Use the buttons to test different tracking events (page views, button clicks, etc.)
-   - Check the browser console for tracking logs
-
-2. **Using Google Analytics Real-Time Dashboard**:
+1. **Using Google Analytics Real-Time Dashboard**:
 
    - Log in to [Google Analytics](https://analytics.google.com/)
    - Go to your property
@@ -56,18 +49,19 @@ To test Google Analytics integration:
    - Interact with your application to see events appear in real-time
    - Note that it may take a moment for events to appear
 
-3. **Using Browser Developer Tools**:
+2. **Using Browser Developer Tools**:
 
    - Open your browser's developer tools (F12 or right-click > Inspect)
    - Go to the Network tab
    - Filter for "collect" or "google-analytics"
    - Interact with your application to see the analytics requests being sent
 
-4. **Common Events to Test**:
+3. **Common Events to Test**:
    - Page views when navigating between pages
    - Button clicks on "Join Quest" and other interactive elements
    - Form submissions in the signup modal
    - Error events when authentication fails
+   - Check browser console logs for tracking information during development
 
 ## Running the Development Server
 
