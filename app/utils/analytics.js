@@ -8,13 +8,13 @@ const isProduction = process.env.NODE_ENV === "production";
 const isBrowser = typeof window !== "undefined";
 
 export const initAnalytics = () => {
-  if (!isBrowser || !isProduction) return;
+  if (!isBrowser) return;
 
-  console.log("Analytics initialized");
+  console.log("Analytics initialized with ID:", GA_MEASUREMENT_ID);
 };
 
 export const trackEvent = (eventName, params = {}) => {
-  if (!isBrowser || !isProduction) {
+  if (!isBrowser) {
     console.log(`[Analytics Event - Dev Mode]: ${eventName}`, params);
     return;
   }
@@ -22,16 +22,20 @@ export const trackEvent = (eventName, params = {}) => {
   try {
     if (window.gtag) {
       window.gtag("event", eventName, params);
+      console.log(`[Google Analytics Event]: ${eventName}`, params);
     }
 
+    // Also track with Vercel Analytics
     track(eventName, params);
-
+    console.log(`[Vercel Analytics Event]: ${eventName}`, params);
   } catch (error) {
     console.error("Error tracking event:", error);
   }
 };
 
 export const trackPageView = (url) => {
+  if (!isBrowser) return;
+  
   if (!url) {
     url = window.location.pathname + window.location.search;
   }

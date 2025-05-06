@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
+import { trackSignup, trackErrorOccurred } from "../utils/analytics";
 
 const customStyles = {
   content: {
@@ -22,9 +23,9 @@ const customStyles = {
     width: "100%",
     maxWidth: "90%",
     border: "none",
-    display:"flex",
-    alignItems:"center",
-    justifyContent: "center"
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -69,9 +70,19 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
       await sendEmailVerification(userCredential.user);
       console.log("Verification email sent");
 
+      // Track successful signup
+      trackSignup("email");
+
       setIsConfirmation(true);
     } catch (error) {
       console.error("Error signing up:", error);
+
+      // Track signup error
+      trackErrorOccurred(
+        error.code || "unknown",
+        error.message || "Unknown error during signup",
+        "signup_modal"
+      );
 
       if (error.code === "auth/email-already-in-use") {
         setError(
@@ -95,7 +106,8 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         setError("Network error. Please check your internet connection.");
       } else {
         setError(
-          `${error.message || "An error occurred during signup."} (${error.code || "unknown"
+          `${error.message || "An error occurred during signup."} (${
+            error.code || "unknown"
           })`
         );
       }

@@ -23,14 +23,17 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-8 lg:gap-14">
         <div className="flex items-center gap-4 sm:gap-6 md:gap-10">
-          <Link href='/' className="text-orange font-cinzel text-sm sm:text-[22px] font-bold">
+          <Link
+            href="/"
+            className="text-orange font-cinzel text-sm sm:text-[22px] font-bold"
+          >
             Home
           </Link>
-          <Link href='#faq' className="text-orange font-cinzel text-sm sm:text-[22px] font-bold">
+          <Link
+            href="#faq"
+            className="text-orange font-cinzel text-sm sm:text-[22px] font-bold"
+          >
             FAQ
-          </Link>
-          <Link href='/contact' className="text-orange font-cinzel text-sm sm:text-[22px] font-bold">
-            Contact
           </Link>
         </div>
         <button

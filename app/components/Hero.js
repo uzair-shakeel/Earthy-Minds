@@ -29,7 +29,6 @@ const Hero = () => {
     },
   ];
 
- 
   return (
     <div className="mb-16">
       <div className="flex items-center mlg:items-start justify-between mlg:flex-row flex-col gap-10 mlg:gap-4">
@@ -45,11 +44,11 @@ const Hero = () => {
 
           <div className="relative my-10">
             <div className="flex justify-center">
-              <p className="text-center font-lora text-[16px] sm:text-[24px] lg:text-[28px] font-bold mb-4"> 
+              <p className="text-center font-lora text-[16px] sm:text-[24px] lg:text-[28px] font-bold mb-4">
                 Watch trailer
               </p>
             </div>
-            <VideoPlayer/>
+            <VideoPlayer />
           </div>
           <p className="text-center text-black font-bold font-lora text-[15px] lg:text-[20px] mt-6 ">
             Your signup helps bring this game to life.

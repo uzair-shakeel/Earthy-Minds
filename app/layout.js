@@ -70,8 +70,7 @@ export const metadata = {
     },
   },
 
-  verification: {
-  },
+  verification: {},
 };
 
 export default function RootLayout({ children }) {
@@ -95,8 +94,9 @@ export default function RootLayout({ children }) {
                 process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com",
               potentialAction: {
                 "@type": "SearchAction",
-                target: `${process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com"
-                  }/search?q={search_term_string}`,
+                target: `${
+                  process.env.NEXT_PUBLIC_SITE_URL || "https://earthyminds.com"
+                }/search?q={search_term_string}`,
                 "query-input": "required name=search_term_string",
               },
             }),
@@ -109,19 +109,17 @@ export default function RootLayout({ children }) {
         {/* Vercel Speed Insights */}
         <SpeedInsights />
 
-        {/* Add Google Analytics */}
+        {/* Google Analytics */}
         <Script
-          strategy="lazyOnload"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-PLACEHOLDER"
-            }`}
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
         />
-        <Script strategy="lazyOnload" id="ga-script">
+        <Script strategy="afterInteractive" id="ga-script">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-PLACEHOLDER"
-            }', {
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname,
             });
           `}
