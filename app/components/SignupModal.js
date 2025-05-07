@@ -18,14 +18,15 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     backgroundColor: "#EDE8D0",
     borderRadius: "8px",
-    padding: "30px",
-    height: "600px",
+    padding: "0px",
+    height: "100%",
     width: "100%",
     maxWidth: "90%",
     border: "none",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    maxHeight: "90%"
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -106,8 +107,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         setError("Network error. Please check your internet connection.");
       } else {
         setError(
-          `${error.message || "An error occurred during signup."} (${
-            error.code || "unknown"
+          `${error.message || "An error occurred during signup."} (${error.code || "unknown"
           })`
         );
       }
@@ -142,6 +142,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
         className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
         aria-label="Close modal"
       >
+
         <svg
           width="24"
           height="24"
@@ -161,7 +162,7 @@ const SignupModal = ({ isOpen, onRequestClose }) => {
 
       {!isConfirmation ? (
         <div className="text-center">
-          <h2 className="font-cinzel text-[16px] sm:text-[28px] font-bold mb-7">
+          <h2 className="font-cinzel text-[16px] sm:text-[28px] leading-[140%] font-bold mb-7">
             Join The Fellowship of
             <br />
             Earthy Minds. Your sign-up
