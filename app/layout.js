@@ -10,6 +10,11 @@ export const metadata = {
   title: "Earthy Minds - Rise of the Wild",
   description:
     "Turn real-world eco actions into quests in this fantasy adventure. Level up your ecological impact and join the fellowship to save Biolysium, where nature's magic needs your help.",
+    icons: {
+      icon: "/favicon.ico", 
+      shortcut: "/favicon.ico",
+      apple: "/favicon.ico", 
+    },
   keywords: [
     "eco habit tracker",
     "gamification",

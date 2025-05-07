@@ -2,7 +2,7 @@ import React from "react";
 
 const ChangingTheGame = () => {
   return (
-    <div className="mt-14 sm:mt-16 max-w-[1020px] w-full mx-auto sm:text-left text-center">
+    <div className="mt-14 sm:mt-16 max-w-[1084px] w-full mx-auto sm:text-left text-center">
       <h2 className="text-[14px] sm:text-[20px] md:text-[28px] font-bold font-cinzel mb-4 sm:mb-6">
         Changing the Game for the Planet
       </h2>

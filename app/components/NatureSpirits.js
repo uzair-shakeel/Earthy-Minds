@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const NatureSpirits = () => {
   return (
-    <div className="mt-16 mb-10 md:mb-[85px]">
-      <div className="max-w-[926px] mx-auto w-full grid grid-cols-4 gap-3 md:gap-6">
+    <div className="mt-6 sm:mt-16 mb-10 md:mb-[85px]">
+      <div className="max-w-[983px] mx-auto w-full grid grid-cols-4 gap-3 md:gap-5">
         <Image
           src="/assets/forest-mask.png"
           alt="Forest Mask"

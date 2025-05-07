@@ -12,7 +12,7 @@ const ImageComparison = () => {
               alt="Biolysium's nature is fading"
               width={538}
               height={302}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover border-4 border-[#B3853E] rounded-[10px]"
             />
           </div>
           <p className="text-center text-black text-[12px] sm:text-[18px] md:text-[20px] font-lora font-bold italic">
@@ -27,7 +27,7 @@ const ImageComparison = () => {
               alt="Your actions awaken life"
               width={538}
               height={302}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover border-4 border-[#B3853E] rounded-[10px]"
             />
           </div>
           <p className="text-center text-black text-[12px] sm:text-[18px] md:text-[20px] font-lora font-bold italic">

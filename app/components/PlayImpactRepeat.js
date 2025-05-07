@@ -2,7 +2,7 @@ import React from "react";
 
 const PlayImpactRepeat = () => {
   return (
-    <div className="mt-10 md:mt-16 mb-12 max-w-[1080px] w-full mx-auto">
+    <div className="mt-10 md:mt-16 mb-12 max-w-[1100px] w-full mx-auto">
       <h2 className="text-sm sm:text-[26px] font-bold font-cinzel mb-3 md:mb-6 text-center">Play, Impact, Repeat</h2>
 
       <ul className="space-y-3 md:space-y-5 list-disc ml-4">

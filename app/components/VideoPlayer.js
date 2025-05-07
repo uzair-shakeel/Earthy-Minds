@@ -38,16 +38,16 @@ export default function VideoPlayer({
      };
 
      return (
-          <div className="relative w-full max-h-[340px] h-[188px] sm:h-[340px] flex justify-center">
-               <div className="w-full max-w-lg h-full rounded-lg overflow-hidden bg-black relative">
+          <div className="relative w-full max-w-[246px] sm:max-w-[464px] mx-auto sm:max-h-[340px] h-[188px] sm:h-[340px] flex justify-center">
+               <div className="w-full max-w-lg h-full rounded-[10px] overflow-hidden bg-black relative">
                     <div className="absolute inset-0 flex items-center justify-center">
                          {/* Thumbnail overlay */}
                          {showThumbnail && (
-                              <div className="absolute inset-0 z-10">
+                              <div className="absolute inset-0 z-10 border-2 border-[#B3853E] rounded-[10px] overflow-hidden">
                                    <img
                                         src={thumbnailSrc}
                                         alt={thumbnailAlt}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover "
                                    />
                               </div>
                          )}
@@ -55,7 +55,7 @@ export default function VideoPlayer({
                          {/* Video element */}
                          <video
                               ref={videoRef}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover border-2 border-[#B3853E] overflow-hidden rounded-[10px]"
                               src={videoSrc}
                               muted
                               loop
