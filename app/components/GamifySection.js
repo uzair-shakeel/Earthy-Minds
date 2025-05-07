@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const GamifySection = () => {
   return (
-      <div className="mt-16 flex items-center md:items-start md:flex-row flex-col gap-6 md:gap-8 max-w-[1075px] justify-between mx-auto w-full">
+      <div className="flex items-center md:items-start md:flex-row flex-col gap-6 md:gap-8 max-w-[1075px] justify-between mx-auto w-full">
         <div className="flex-1 lg:mt-[35px] max-w-[692px]">
           <h2 className="md:text-left text-center text-[14px] sm:text-[20px] md:text-[26px] lg:text-[28px] font-bold font-cinzel">
             Gamify your sustainable actions

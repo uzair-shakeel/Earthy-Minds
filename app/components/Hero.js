@@ -34,7 +34,7 @@ const Hero = () => {
   ];
 
   return (
-    <div id="hero" className="scroll-mt-28 sm:scroll-mt-44 mb-16">
+    <div id="hero" className="scroll-mt-28 sm:scroll-mt-44 pb-[45px] sm:pb-[99px]">
       <div className="flex items-center mlg:items-start justify-between  mlg:flex-row flex-col gap-10 mlg:gap-4">
         <div className="w-full">
           <h1 className="text-black text-center text-[14px] sm:text-[20px] lg:text-[28px] font-bold font-cinzel mb-1 sm:mb-3 lg:mb-5">
