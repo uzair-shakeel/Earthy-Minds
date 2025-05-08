@@ -48,7 +48,7 @@ export default function Home() {
       <div className="w-full px-4 md:px-6 lg:px-8">
         <div className="max-w-[1332px] mx-auto w-full">
           <Header />
-          <div className="mt-2 bg-[#EDE8D0] w-full mx-auto rounded-[10px] pb-5 sm:pb-14 pt-[18px] sm:pt-[34px] px-6 md:px-8 lg:px-[77px]">
+          <div className="mt-[75px] sm:mt-[100px] md:mt-[155px] bg-[#EDE8D0] w-full mx-auto rounded-[10px] pb-5 sm:pb-14 pt-[18px] sm:pt-[34px] px-6 md:px-8 lg:px-[77px]">
             <Hero />
 
             <Suspense
